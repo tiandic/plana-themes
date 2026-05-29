@@ -8,6 +8,7 @@
 - 头像
 - 壁纸
 - fcitx5主题
+
 - hyprlock锁屏主题
 
 ### 预览与安装
@@ -26,7 +27,11 @@ sudo grub-mkconfig /boot/grub/grub.cfg
 #### plymouth
 启动:
 
+https://github.com/user-attachments/assets/dcb8c46d-7960-4c63-8dcb-68cfaccecabd
+
 关机:
+
+https://github.com/user-attachments/assets/9e33e495-98a6-4f3e-89ba-14a45a0633b2
 
 ```
 # 确保已安装并正确设置了 plymouth
@@ -38,9 +43,12 @@ sudo plymouth-set-default-theme -R plana
 
 #### sddm
 
+https://github.com/user-attachments/assets/a0f00ec9-e2a5-4a51-9491-6de530171b4d
+
 ```
 cd plana-themes
 sudo pacman -S sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
+7z x sddm/plana/Backgrounds/plana.7z.001 -osddm/plana/Backgrounds/
 sudo cp sddm/plana/Fonts/pixelon.regular.ttf /usr/share/fonts/
 sudo cp -r sddm/plana /usr/share/sddm/themes
 
