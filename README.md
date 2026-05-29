@@ -39,7 +39,7 @@ cd plana-themes
 sudo cp -r plymouth/plana /usr/share/plymouth/themes/
 sudo plymouth-set-default-theme -R plana
 ```
-> ⚠️注意: 该plymouth主题由于体积庞大,所以开机时,可能会造成启动时间比原来多5秒左右
+> ⚠️注意: 该plymouth主题由于体积庞大,所以开机时,可能会造成启动时间比原来多5秒左右的问题
 
 #### sddm
 
