@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=plana
+Description=display plana&arona animation
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/plana
+ScriptFile=/usr/share/plymouth/themes/plana/plana.script

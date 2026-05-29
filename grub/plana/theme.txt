@@ -1,0 +1,24 @@
+title-text: ""
+desktop-image: "background.png"
+
++ boot_menu {
+  left = 55%
+  top = 10%
+  width = 40%
+  height = 72%
+
+  menu_pixmap_style = "boot_menu_*.png"
+  item_font = "Terminus Regular 18"
+
+  item_color = "#CDD6F4"
+  selected_item_pixmap_style = "select_*.png"
+}
+
++ label {
+    id = "__timeout__"
+    left = 58%
+    top = 75%
+
+  text = "当前已选中系统将会在 %d 秒后启动"
+  color = "#cccccc"
+}

@@ -1,0 +1,126 @@
+screen.w      = Window.GetWidth(0);
+screen.h      = Window.GetHeight(0);
+screen.half.w = Window.GetWidth(0) / 2;
+screen.half.h = Window.GetHeight(0) / 2;
+
+playing_status    = "pause";
+progress          = 0;
+
+question = null;
+answer   = null;
+message  = null;
+prompt   = null;
+bullets  = null;
+
+bullet.image = Image.Text("*", 1, 1, 1);
+
+if (Plymouth.GetMode()=="boot"){
+    for (i = 0; i < 377; i++)
+        flyingman_image[i] = Image("frame_" + i + ".png");
+}
+else {
+    for (i = 0; i < 157; i++)
+        flyingman_image[i] = Image("frame_shutdown_" + i + ".png");
+}
+
+flyingman_sprite = Sprite();
+flyingman_sprite.SetX(Window.GetX() + screen.half.w - flyingman_image[0].GetWidth() / 2);
+flyingman_sprite.SetY(Window.GetY() + screen.half.h - flyingman_image[0].GetHeight() / 2);
+flyingman_sprite.SetZ(-1);
+
+fun refresh_callback(){
+    if (Plymouth.GetMode()=="boot"){
+        if (playing_status == "play"){
+            frame = Math.Int(progress / 2);
+            if (frame >= 377){
+                flyingman_sprite.SetImage(flyingman_image[376]);
+                playing_status = "pause";
+                return;
+            }
+            flyingman_sprite.SetImage(flyingman_image[frame]);
+            progress++;
+        }
+    }
+    else {
+        frame = Math.Int(progress / 2) % 157;
+        flyingman_sprite.SetImage(flyingman_image[frame]);
+        progress++;
+    }
+}
+Plymouth.SetRefreshFunction(refresh_callback);
+
+fun DisplayNormalCallback(){
+    bullets  = null;
+    prompt   = null;
+    message  = null;
+    question = null;
+    answer   = null;
+
+}
+Plymouth.SetDisplayNormalFunction(DisplayNormalCallback);
+
+fun DisplayPasswordCallback(nil, bulletCount){
+    playing_status   = "pause";
+
+    prompt        = null;
+    prompt.image  = Image.Text("Enter Password", 1, 1, 1);
+    prompt.sprite = Sprite(prompt.image);
+    prompt.sprite.SetX(screen.half.w - prompt.image.GetWidth() / 2);
+    prompt.sprite.SetY(screen.h - 4 * prompt.image.GetHeight());
+
+    bullets    = null;
+    totalWidth = bulletCount * bullet.image.GetWidth();
+    startPos   = screen.half.w - totalWidth / 2;
+
+    for (i = 0; i < bulletCount; i++){
+        bullets[i].sprite = Sprite(bullet.image);
+        bullets[i].sprite.SetX(startPos + i * bullet.image.GetWidth());
+        bullets[i].sprite.SetY(screen.h - 2 * bullet.image.GetHeight());
+    }
+}
+Plymouth.SetDisplayPasswordFunction(DisplayPasswordCallback);
+
+fun DisplayQuestionCallback(prompt_text, entry){
+    question = null;
+    answer   = null;
+
+    if (entry == "")
+        entry = "<answer>";
+
+    question.image  = Image.Text(prompt_text, 1, 1, 1);
+    question.sprite = Sprite(question.image);
+    question.sprite.SetX(screen.half.w - question.image.GetWidth() / 2);
+    question.sprite.SetY(screen.h - 4 * question.image.GetHeight());
+
+    answer.image  = Image.Text(entry, 1, 1, 1);
+    answer.sprite = Sprite(answer.image);
+    answer.sprite.SetX(screen.half.w - answer.image.GetWidth() / 2);
+    answer.sprite.SetY(screen.h - 2 * answer.image.GetHeight());
+}
+Plymouth.SetDisplayQuestionFunction(DisplayQuestionCallback);
+
+fun StringContains(haystack, needle){
+    needle_len   = needle.Length();
+    haystack_len = haystack.Length();
+
+    for (i = 0; i <= haystack_len - needle_len; i++){
+        if (haystack.SubString(i, i + needle_len) == needle)
+            return 1;
+    }
+
+    return 0;
+}
+
+fun MessageCallback(text){
+    message.image  = Image.Text(text, 1, 1, 1);
+    message.sprite = Sprite(message.image);
+    message.sprite.SetX(screen.half.w - message.image.GetWidth() / 2);
+    message.sprite.SetY(message.image.GetHeight());
+
+    if (StringContains(text,"success")){
+        flyingman_sprite.SetZ(0);
+        message.sprite.SetZ(-3);
+        playing_status = "play";
+    }
+}
+Plymouth.SetMessageFunction(MessageCallback);

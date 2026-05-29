@@ -1,0 +1,13 @@
+[SddmGreeterTheme]
+Name=plana
+Author=keyitdev,tiandic
+Website=https://github.com/tiandic/plana-themes
+License=GPL-3.0-or-later
+Type=sddm-theme
+Version=1.0
+ConfigFile=plana.conf
+MainScript=Main.qml
+TranslationsDirectory=translations
+Theme-Id=plana
+Theme-API=2.0
+QtVersion=6
