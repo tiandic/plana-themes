@@ -16,7 +16,7 @@
 ![grub](./preview/grub.png)
 ```
 cd plana-themes
-sudo cp grub/plana /boot/grub/themes/
+sudo cp -r grub/plana /boot/grub/themes/
 
 # 然后在 /etc/default/grub 添加 
 # GRUB_THEME="/boot/grub/themes/plana/theme.txt"
@@ -68,7 +68,7 @@ InputMethod=qtvirtualkeyboard" | sudo tee /etc/sddm.conf.d/virtualkbd.conf
 #### fcitx5
 ![fcitx5](./preview/fcitx5.png)
 ```
-cp ./fcitx5/OriDark $HOME/.local/share/fcitx5/themes/
+cp -r fcitx5/OriDark $HOME/.local/share/fcitx5/themes/
 # 打开配置工具,选择该主题
 ```
 
