@@ -21,7 +21,7 @@ sudo cp -r grub/plana /boot/grub/themes/
 # 然后在 /etc/default/grub 添加 
 # GRUB_THEME="/boot/grub/themes/plana/theme.txt"
 
-sudo grub-mkconfig /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 #### plymouth
