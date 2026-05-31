@@ -49,7 +49,7 @@ https://github.com/user-attachments/assets/a0f00ec9-e2a5-4a51-9491-6de530171b4d
 cd plana-themes
 sudo pacman -S sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
 7z x sddm/plana/Backgrounds/plana.7z.001 -osddm/plana/Backgrounds/
-sudo cp sddm/plana/Fonts/pixelon.regular.ttf /usr/share/fonts/
+sudo cp sddm/plana/Fonts/NotoSansMono-VariableFont_wdth,wght.ttf /usr/share/fonts/
 sudo cp -r sddm/plana /usr/share/sddm/themes
 
 echo "[Theme]
