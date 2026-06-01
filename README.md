@@ -75,7 +75,7 @@ cp -r fcitx5/OriDark $HOME/.local/share/fcitx5/themes/
 #### hyprlock
 ![hyprlock](./preview/hyprlock.png)
 ```
-cp hyprlock/* .config/hypr/
+cp hyprlock/* ~/.config/hypr/
 ```
 
 ### 特别鸣谢
