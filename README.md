@@ -40,6 +40,10 @@ sudo cp -r plymouth/plana /usr/share/plymouth/themes/
 sudo plymouth-set-default-theme -R plana
 ```
 > ⚠️注意: 该plymouth主题由于体积庞大,所以开机时,可能会造成启动时间比原来多5秒左右的问题
+> 
+> 另外,对于`arch linux`用户,还需要添加类似`debian`的LUKS解密成功提示,并确保解密成功的提示包含`success`字符串,否则开机动画将不会播放
+> 
+> 详细步骤见: [How to get a LUKS prompt in `plymouth` on Arch Linux like in Debian: `cryptsetup: sda3_crypt set up successfully` - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/806254/how-to-get-a-luks-prompt-in-plymouth-on-arch-linux-like-in-debian-cryptsetup)
 
 #### sddm
 
