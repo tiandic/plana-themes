@@ -49,10 +49,23 @@ sudo plymouth-set-default-theme -R plana
 
 https://github.com/user-attachments/assets/a0f00ec9-e2a5-4a51-9491-6de530171b4d
 
+安装依赖
+
+[`sddm >= 0.21.0`](https://github.com/sddm/sddm), [`qt6 >= 6.8`](https://doc.qt.io/qt-6/index.html), [`qt6-svg >= 6.8`](https://doc.qt.io/qt-6/qtsvg-index.html), [`qt6-virtualkeyboard >= 6.8`](https://doc.qt.io/qt-6/qtvirtualkeyboard-index.html), [`qt6-multimedia >= 6.8`](https://doc.qt.io/qt-6/qtmultimedia-index.html)
+
+```sh
+sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg     # Arch
+sddm qt6-svg qt6-virtualkeyboard qt6-multimedia            # Void
+sddm qt6-qtsvg qt6-qtvirtualkeyboard qt6-qtmultimedia      # Fedora
+sddm-qt6 libQt6Svg6 qt6-virtualkeyboard qt6-virtualkeyboard-imports qt6-multimedia qt6-multimedia-imports        # OpenSUSE
+sddm qt6-svg-dev qml6-module-qtquick-virtualkeyboard qt6-multimedia-dev qml6-module-qtquick-controls qml6-module-qtquick-effects libxcb-cursor0 # Debian trixie (13.5)
+```
+
+安装主题
 ```
 cd plana-themes
-sudo pacman -S sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
 7z x sddm/plana/Backgrounds/plana.7z.001 -osddm/plana/Backgrounds/
+rm sddm/plana/Backgrounds/plana.7z.*
 sudo cp sddm/plana/Fonts/NotoSansMono-VariableFont_wdth,wght.ttf /usr/share/fonts/
 sudo cp -r sddm/plana /usr/share/sddm/themes
 
